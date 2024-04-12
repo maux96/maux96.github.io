@@ -1,0 +1,41 @@
+.colorfullbackground{
+  /* background: linear-gradient(to bottom right, #1d4ed8, #6b21a8, #b91c1c); */
+  background: linear-gradient(to top right, #1d4ed8, #6b21a8, #b91c1c);
+  animation: -global-background-move 15s infinite ease; background-size: 400% 400%;
+}
+
+.beautytext{
+  background: linear-gradient(to bottom right, #1d4ed8, #6b21a8, #b91c1c);
+  background-clip: text ;
+  color: transparent; 
+  animation: -global-background-move 12s infinite ease;
+  background-size: 400% 400%;
+}
+
+@keyframes -global-background-move{
+  0%{
+    background-position:0% 50% ; 
+  }
+  50%{
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0% 50%;
+  }
+}
+
+
+.terminalcursor:after{
+  content: '_';
+}
+
+.blinkterminalcursor:after{
+  content: '_';
+  animation: blink 1s infinite step-end;
+}
+
+@keyframes blink {
+  from{ opacity: 100;}
+  50%{ opacity: 0;}
+  to{ opacity: 0;}
+}
