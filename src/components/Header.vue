@@ -1,5 +1,5 @@
 <template>
-  <div id="start"
+  <div id="header"
     class="relative flex flex-col place-content-between w-screen min-h-screen overflow-hidden colorfullbackground"
     :style="{'--parallelax-value': pureParallelaxValue, animation: '-global-background-move 12s infinite ease', 'background-size': '400% 400%'}">
     <div> <!-- dummy node for flex place-content-between --></div>
@@ -32,9 +32,30 @@
 <script setup>
 import GoogleIcon from '@/components/common/GoogleIcon.vue'
 import TextWritter from '@/components/common/TextWritter.vue'
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const pureParallelaxValue = ref(0)
+onMounted(()=>{
+  const bannerObserver = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+      if(window.visualViewport.width < 640) {
+        pureParallelaxValue.value = 0;
+      } else {
+        pureParallelaxValue.value=Math.round(document.documentElement.scrollTop/document.documentElement.scrollHeight*100)/100;
+      }
+    })
+    },{
+      threshold:[1,0.9,0.8,0.6,0.4,0.3,0.2,0.1]
+    });
+  bannerObserver.observe(document.getElementById('header'));
+})
+
+
+/* function resolveParallelaxValue(){
+  pureParallelaxValue=Math.round(document.documentElement.scrollTop/document.documentElement.scrollHeight*100)/100;
+} */
+
+
 
 </script>
 

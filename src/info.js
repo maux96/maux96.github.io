@@ -40,7 +40,7 @@ export const experiences = [
   {
     title: 'Bachelor degree in Computer Science',
     company: 'Havana University',
-    description: null,
+    description: 'My academic background from here has equipped me with a solid foundation in various programming languages, algorithms, data structures, and software development methodologies.',
     icon: 'school' 
   },
   {

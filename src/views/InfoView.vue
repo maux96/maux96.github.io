@@ -11,14 +11,15 @@ import * as INFO from '@/info.js';
   <div id="info" class="relative p-5 flex lg:flex-row flex-col w-screen  overflow-hidden">
 
     <div class="p-2 basis-1/3">
-      <TextWritter class="beautytext font-bold text-3xl mb-4">Skills</TextWritter>
-      <Skills/>
-    </div>
-
-    <div class="p-2 basis-1/3">
       <TextWritter class="beautytext font-bold text-3xl mb-4">Experience</TextWritter>
       <Experience />   
     </div>
+
+    <div class="p-2 basis-1/3">
+      <TextWritter class="beautytext font-bold text-3xl mb-4">Skills</TextWritter>
+      <Skills/>
+    </div>
+ 
     <div class="p-2 basis-1/3">
       <TextWritter class="beautytext font-bold text-3xl mb-4">Hobby Programming</TextWritter>
       <!-- algunas boberias -->
