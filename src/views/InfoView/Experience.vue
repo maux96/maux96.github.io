@@ -1,5 +1,6 @@
 <script setup>
 import GoogleIcon from '@/components/common/GoogleIcon.vue';
+import TextWritter from '@/components/common/TextWritter.vue';
 
 import { experiences } from '@/info.js'
 </script>
@@ -15,7 +16,7 @@ import { experiences } from '@/info.js'
           <div class="border-dashed border-l-2 flex-grow "></div>
         </div>
         <div class="pb-6">
-          <div class="font-bold text-blue-700">{{ exp.title }}</div>
+          <TextWritter class="font-bold text-blue-700">{{ exp.title }}</TextWritter>
           <p class="text-gray-600 text-sm">{{ exp.company }}</p>
           <p class="text-sm text-gray-500">{{ exp.description }}</p>
         </div>

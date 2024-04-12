@@ -1,7 +1,8 @@
 <template>
   <div id="header"
     class="relative flex flex-col place-content-between w-screen min-h-screen overflow-hidden colorfullbackground"
-    :style="{'--parallelax-value': pureParallelaxValue, animation: '-global-background-move 12s infinite ease', 'background-size': '400% 400%'}">
+    style="animation: -global-background-move 12s infinite ease; background-size: 400% 400%"
+    :style="{'--parallelax-value': pureParallelaxValue}">
     <div> <!-- dummy node for flex place-content-between --></div>
       <div id="bannercontent" class="z-0 flex flex-wrap md:flex-nowrap gap-5 place-content-start md:place-content-center place-items-center px-5">
       <img class="rounded-3xl md:w-60 md:h-60 w-44 h-44" src="https://avatars.githubusercontent.com/u/39928836?v=4" alt="Mauricio Mahmud">
