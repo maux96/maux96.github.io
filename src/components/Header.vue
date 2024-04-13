@@ -35,25 +35,48 @@
 <script setup>
 import GoogleIcon from '@/components/common/GoogleIcon.vue'
 import TextWritter from '@/components/common/TextWritter.vue'
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+
+
+const MAX_X_ANGLE = 5;
+const MAX_Y_ANGLE = 5;
 
 const titleContainer = ref(null)
 const container = ref(null)
 
 let animationFrame = null 
+
+let currentScrollPosition = 0
+let lastXAngle = 0
+let lastYAngle = 0
+
+onMounted(()=>{
+  addEventListener('scroll',()=>{ 
+    animationFrame && window.cancelAnimationFrame(animationFrame);
+    animationFrame = window.requestAnimationFrame(()=>{
+      const scrollPosition = document.documentElement.scrollTop / document.documentElement.scrollHeight * 500; 
+      currentScrollPosition = scrollPosition;
+      refreshTransform()
+    })
+  })
+})
+
 function moveTitle(event){
 
   animationFrame && window.cancelAnimationFrame(animationFrame);
 
   animationFrame = window.requestAnimationFrame(()=>{
-    const X =-((event.x/container.value.offsetWidth) - 0.5).toFixed(2);
-    const Y =((event.y/container.value.offsetHeight) - 0.5).toFixed(2);
 
-    const MAX_X_ANGLE = 5;
-    const MAX_Y_ANGLE = 5;
+    lastXAngle =-((event.x/container.value.offsetWidth) - 0.5).toFixed(2);
+    lastYAngle =((event.y/container.value.offsetHeight) - 0.5).toFixed(2);
 
-    titleContainer.value.style.transform = `rotateY(${X*MAX_X_ANGLE}deg) rotateX(${Y*MAX_Y_ANGLE}deg)`;
+    refreshTransform()
   })
+}
+
+function refreshTransform() {
+  titleContainer.value.style.transform = `translateY(${currentScrollPosition}px) rotateY(${lastXAngle*MAX_X_ANGLE}deg) rotateX(${lastYAngle*MAX_Y_ANGLE}deg) `;
+  titleContainer.value.style.opacity = 1 - currentScrollPosition/200
 }
 
 </script>
