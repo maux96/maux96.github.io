@@ -21,6 +21,10 @@ const props = defineProps({
     type: Number,
     default: 50
   },
+  wrongCharProbability: {
+    type: Number,
+    default: 0.0
+  }
 })
 
 const terminalCursorClass = computed(() =>{ 
@@ -41,13 +45,22 @@ const currentText = ref('')
 const contentNode = ref(null)
 const finalNode = ref(null)
 
-function write() {
+async function write() {
   const i = currentText.value.length
   if(i === textToWrite.value.length){
     writeEnded.value = true 
     emit('writeEnded') 
     return;
   }
+
+  if(Math.random() < props.wrongCharProbability){
+    /* add random char */
+    currentText.value += String.fromCharCode(Math.floor(Math.random() * 255));
+    await new Promise(resolve => setTimeout(resolve,props.speed*5))
+    /* remove the last character */
+    currentText.value = currentText.value.slice(0,-1)
+  }
+
   currentText.value += textToWrite.value[i];
   setTimeout(write,props.speed)
 }
