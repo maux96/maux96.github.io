@@ -52,31 +52,23 @@ let lastYAngle = 0
 
 onMounted(()=>{
   addEventListener('scroll',()=>{ 
-    animationFrame && window.cancelAnimationFrame(animationFrame);
-    animationFrame = window.requestAnimationFrame(()=>{
-      const scrollPosition = document.documentElement.scrollTop / document.documentElement.scrollHeight * 500; 
-      currentScrollPosition = scrollPosition;
-      refreshTransform()
-    })
+    currentScrollPosition = document.documentElement.scrollTop / document.documentElement.scrollHeight; 
+    refreshTransform()
   })
 })
 
 function moveTitle(event){
-
-  animationFrame && window.cancelAnimationFrame(animationFrame);
-
-  animationFrame = window.requestAnimationFrame(()=>{
-
-    lastXAngle =-((event.x/container.value.offsetWidth) - 0.5).toFixed(2);
-    lastYAngle =((event.y/container.value.offsetHeight) - 0.5).toFixed(2);
-
-    refreshTransform()
-  })
+  lastXAngle =-((event.x/container.value.offsetWidth) - 0.5).toFixed(2);
+  lastYAngle =((event.y/container.value.offsetHeight) - 0.5).toFixed(2);
+  refreshTransform()
 }
 
 function refreshTransform() {
-  titleContainer.value.style.transform = `translateY(${currentScrollPosition}px) rotateY(${lastXAngle*MAX_X_ANGLE}deg) rotateX(${lastYAngle*MAX_Y_ANGLE}deg) `;
-  titleContainer.value.style.opacity = 1 - currentScrollPosition/200
+  animationFrame && window.cancelAnimationFrame(animationFrame);
+  animationFrame = window.requestAnimationFrame(()=>{
+    titleContainer.value.style.transform = `translateY(${currentScrollPosition*500}px) rotateY(${lastXAngle*MAX_X_ANGLE}deg) rotateX(${lastYAngle*MAX_Y_ANGLE}deg) `;
+    titleContainer.value.style.opacity = 1 - currentScrollPosition * 2 
+  })
 }
 
 </script>
