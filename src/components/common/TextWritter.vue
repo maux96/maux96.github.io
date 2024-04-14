@@ -1,7 +1,7 @@
 <template>
   <div ref="finalNode" :class="[terminalCursorClass]">
     <span v-if="!sizeResolved" ref="contentNode">
-      <slot></slot>
+      {{ text }}
     </span>
     {{ currentText }} 
   </div>
@@ -13,6 +13,10 @@ import { ref, onMounted, computed } from 'vue'
 const emit = defineEmits(['writeEnded'])
 
 const props = defineProps({
+  text: {
+    type: String,
+    default: 'TEXTO DE PRUEBAS'
+  },
   showBlinkCursor: {
     type: Boolean,
     default: false 
@@ -24,6 +28,10 @@ const props = defineProps({
   wrongCharProbability: {
     type: Number,
     default: 0.0
+  },
+  restart: {
+    type: Boolean,
+    default: true 
   }
 })
 
@@ -39,7 +47,6 @@ const writeEnded = ref(false)
 
 const sizeResolved = ref(false)
 
-const textToWrite = ref('') 
 const currentText = ref('')
 
 const contentNode = ref(null)
@@ -47,7 +54,7 @@ const finalNode = ref(null)
 
 async function write() {
   const i = currentText.value.length
-  if(i === textToWrite.value.length){
+  if(i === props.text.length){
     writeEnded.value = true 
     emit('writeEnded') 
     return;
@@ -61,13 +68,12 @@ async function write() {
     currentText.value = currentText.value.slice(0,-1)
   }
 
-  currentText.value += textToWrite.value[i];
+  currentText.value += props.text[i];
   setTimeout(write,props.speed)
 }
 
 
 onMounted(() => {
-  textToWrite.value = contentNode.value.textContent 
   finalNode.value.style.minHeight=`${contentNode.value.offsetHeight}px`;
   finalNode.value.style.minWidth=`${contentNode.value.offsetWidth}px`
   sizeResolved.value = true
@@ -75,6 +81,8 @@ onMounted(() => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         write()
+      } else if(props.restart) {
+        currentText.value = '' 
       }
     })
   }, {

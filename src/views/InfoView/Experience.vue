@@ -16,7 +16,7 @@ import { experiences } from '@/info.js'
           <div class="border-dashed border-l-2 flex-grow "></div>
         </div>
         <div class="pb-6">
-          <TextWritter class="font-bold text-blue-700">{{ exp.title }}</TextWritter>
+          <TextWritter class="font-bold text-blue-700" :text="exp.title" />
           <p class="text-gray-600 text-sm">{{ exp.company }}</p>
           <p class="text-sm text-gray-500">{{ exp.description }}</p>
         </div>

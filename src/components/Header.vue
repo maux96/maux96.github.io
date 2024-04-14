@@ -9,11 +9,11 @@
         <img class="rounded-3xl md:w-60 md:h-60 w-44 h-44" src="https://avatars.githubusercontent.com/u/39928836?v=4" alt="Mauricio Mahmud">
         <div class="text-white md:basis-1/2 ">
           <div class="text-4xl font-bold">
-            <TextWritter show-blink-cursor>{{ '>' }} Hi, I'm Mauricio Mahmud</TextWritter>
+            <TextWritter show-blink-cursor text="> Hi, I'm Mauricio Mahmud" />
           </div>
-          <h2 class="text-2xl font-light mb-6"> <TextWritter>...computer scientist.</TextWritter></h2>
+          <h2 class="text-2xl font-light mb-6"> <TextWritter  text="...computer scientist." /></h2>
           <p class="text-md  md:text-xl">
-            <TextWritter :speed="10">I'm currently based in Málaga, Spain. I have cultivated a career in computer science, where I've had the opportunity to develop a robust skill set and work on a multitude of projects that span various aspects of technology, including software development, data analysis, and system architecture. In my free time I learn new stuff that calls my attention or program something interesting to me.</TextWritter>
+            <TextWritter :speed="10" :restart="false" text="I'm currently based in Málaga, Spain. I have cultivated a career in computer science, where I've had the opportunity to develop a robust skill set and work on a multitude of projects that span various aspects of technology, including software development, data analysis, and system architecture. In my free time I learn new stuff that calls my attention or program something interesting to me." />
           </p>
           <div>
             <div class="flex flex-row justify-end mt-8">
