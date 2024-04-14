@@ -61,7 +61,7 @@ export const projects= [
 ]
 
 export const hobbyProjects = [
-    {name:'Yet Another Slider', description: "Slider written in TypeScript, easy to set up, the one used by this page.",link:"https://github.com/maux96/yas"},
+    {name:'Yet Another Slider', description: "Slider written in TypeScript, easy to set up.",link:"https://github.com/maux96/yas"},
     {name:"Minesweeper Game",description: "A very simple version of minesweeper game, I created only for joy and practice typescript skills.", link:"https://maux96.github.io/minesweeper-web-game/"},
     //{name:"GolangChat",description: "A simple terminal app writed in Go using net/rpc module from the standard library.", link:"https://github.com/maux96/GolangChat"},
 ]
