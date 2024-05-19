@@ -7,7 +7,7 @@
       :style="{'--parallelax-value': pureParallelaxValue}"
     >
       <div class="flex gap-2 place-content-end"> 
-        <a :href="cvUrl" target="_blank" class="flex place-items-center !text-white border-solid border-white border-2 px-2 rounded-md mr-2 my-2 cursor-pointer select-none">
+        <a :href="cvUrl" target="_blank" class="flex place-items-center !text-white border-solid border-white border-2 px-2 rounded-md mr-5 my-2 cursor-pointer select-none">
           <GoogleIcon name="download" :size="32" />
           <div class="!font-extrabold">Download CV</div> 
         </a>
