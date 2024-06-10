@@ -21,7 +21,7 @@ import * as INFO from '@/info.js';
     </div>
  
     <div class="p-2 basis-1/3">
-      <TextWritter class="beautytext font-bold text-3xl mb-4" text="Hobby Programming" />
+      <TextWritter class="beautytext font-bold text-3xl mb-4" text="Hobby Projects" />
       <!-- algunas boberias -->
       <p v-for="project, index in INFO.hobbyProjects"><a :href="project.link" class="beautytext font-bold text-blue-700 hover:text-blue-500"> {{project.name}}</a>: {{project.description}}</p>  
       
