@@ -61,7 +61,8 @@ export const projects= [
 ]
 
 export const hobbyProjects = [
-    {name:"GoFtpServer",description: " A simple ftp server written in Golang.", link:"https://github.com/maux96/go-ftp"},
+    {name:"Maux Bar",description: "Bar written in golang using SDL2.", link:"https://github.com/maux96/maux-bar"},
+    {name:"Go Ftp Server",description: " A simple ftp server written in Golang.", link:"https://github.com/maux96/go-ftp"},
     {name:'Yet Another Slider', description: "Slider written in TypeScript, easy to set up.",link:"https://github.com/maux96/yas"},
     //{name:"Minesweeper Game",description: "A very simple version of minesweeper game, I created only for joy and practice typescript skills.", link:"https://maux96.github.io/minesweeper-web-game/"},
 ]
