@@ -26,6 +26,12 @@ export const skills= {
 
 export const experiences = [
   {
+    title: 'Software Developer',
+    company: 'Southworks',
+    description: 'My current job.',
+    icon: 'code' 
+  },
+  {
     title: 'Frontend Developer',
     company: 'Dara Services',
     description: 'Working with Supabase and Vue.js as main framework in multiple web sites.',
