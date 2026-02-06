@@ -28,7 +28,7 @@ import * as INFO from '@/info.js';
 
       <TextWritter class="beautytext font-bold text-3xl mt-4 mb-4" text="Current Interests" />
 
-      <p>ComputerScience, AI, Machine Learning, Maths, Blockchain and Crypto, GameDev, Linux and much more.</p>
+      <p>Computer Science, AI, Machine Learning, Maths, GameDev, Linux and much more.</p>
 
     </div>
 

@@ -12,15 +12,16 @@ export const skills= {
     frameworks:[
         "Django",
         ".NET",
+        "React",
         "Vue.js",
         "Tailwind",
-        "Python-Telegram-Bot",
+        "Node.js",
     ],
     others:[
+        "Azure",
         "Git",
         "Docker",
         "Godot",
-        "Unity",
     ]
   }
 
@@ -28,7 +29,7 @@ export const experiences = [
   {
     title: 'Software Developer',
     company: 'Southworks',
-    description: 'My current job.',
+    description: 'Software developer mainly working in AI applications with Azure, infrastructure as code (Terraform and Pulumi), .NET, Node.js, Python and React.',
     icon: 'code' 
   },
   {
