@@ -7,14 +7,14 @@
       :style="{'--parallelax-value': pureParallelaxValue}"
     >
       <div class="flex gap-2 place-content-end"> 
-        <a :href="cvUrl" target="_blank" class="flex place-items-center !text-white border-solid border-white border-2 px-2 rounded-md mr-5 my-2 cursor-pointer select-none">
+        <a :href="CV_URL" target="_blank" class="flex place-items-center !text-white border-solid border-white border-2 px-2 rounded-md mr-5 my-2 cursor-pointer select-none">
           <GoogleIcon name="download" :size="32" />
           <div class="!font-extrabold">Download CV</div> 
         </a>
       </div>
 
       <div ref="titleContainer" class="flex flex-wrap md:flex-nowrap gap-5 place-content-start md:place-content-center place-items-start px-5">
-        <img class="rounded-3xl md:w-60 md:h-60 w-44 h-44" src="https://avatars.githubusercontent.com/u/39928836?v=4" alt="Mauricio Mahmud">
+        <img class="rounded-3xl md:w-60 md:h-60 w-44 h-44" :src="PROFILE_PICTURE_URL" alt="Mauricio Mahmud">
         <div class="text-white md:basis-1/2 ">
           <div class="text-4xl font-bold">
             <TextWritter show-blink-cursor text="> Hi, I'm Mauricio Mahmud" />
@@ -44,9 +44,9 @@
 import GoogleIcon from '@/components/common/GoogleIcon.vue'
 import TextWritter from '@/components/common/TextWritter.vue'
 import { onMounted, ref } from 'vue';
+import { CV_URL, PROFILE_PICTURE_URL } from '@/info';
 
 
-const cvUrl = 'https://drive.google.com/file/d/1S4es6okjbK9onXTjg9seji9N-_dCdl9G/view?usp=sharing'
 const MAX_X_ANGLE = 5;
 const MAX_Y_ANGLE = 5;
 

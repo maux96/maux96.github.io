@@ -1,3 +1,5 @@
+export const CV_URL = "https://drive.google.com/file/d/1-KgyVJhzZoTHp3ks5nWYptDM_yl7krmq/view?usp=sharing" 
+export const PROFILE_PICTURE_URL = "https://avatars.githubusercontent.com/u/39928836?v=4"
 
 export const skills= {
     languages:[ 
@@ -10,6 +12,7 @@ export const skills= {
         "C/C++",
     ],
     frameworks:[
+        "LangChain",
         "Django",
         ".NET",
         "React",
@@ -33,7 +36,7 @@ export const experiences = [
     icon: 'code' 
   },
   {
-    title: 'Frontend Developer',
+    title: 'FullStack Developer',
     company: 'Dara Services',
     description: 'Working with Supabase and Vue.js as main framework in multiple web sites.',
     icon: 'code' 
