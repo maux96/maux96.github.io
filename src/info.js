@@ -1,4 +1,4 @@
-export const CV_URL = "https://drive.google.com/file/d/1-KgyVJhzZoTHp3ks5nWYptDM_yl7krmq/view?usp=sharing" 
+export const CV_URL = "https://drive.google.com/file/d/1Tv9PHriI0pH22kutiX0B1EAczJ_-nZxJ/view?usp=sharing" 
 export const PROFILE_PICTURE_URL = "https://avatars.githubusercontent.com/u/39928836?v=4"
 
 export const skills= {
