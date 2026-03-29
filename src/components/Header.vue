@@ -4,10 +4,9 @@
     <div id="header"
       class="relative flex flex-col place-content-between gap-3 w-screen min-h-screen overflow-hidden colorfullbackground"
       style="animation: -global-background-move 12s infinite ease; background-size: 400% 400%; perspective: 300px;"
-      :style="{'--parallelax-value': pureParallelaxValue}"
     >
       <div class="flex gap-2 place-content-end"> 
-        <a :href="CV_URL" target="_blank" class="flex place-items-center !text-white border-solid border-white border-2 px-2 rounded-md mr-5 my-2 cursor-pointer select-none">
+        <a :href="CV_URL" target="_blank" class="flex place-items-center !text-white border-solid border-white border-2 px-2 rounded-md mx-5 my-2 cursor-pointer select-none">
           <GoogleIcon name="download" :size="32" />
           <div class="!font-extrabold">Download CV</div> 
         </a>
@@ -19,7 +18,9 @@
           <div class="text-4xl font-bold">
             <TextWritter show-blink-cursor text="> Hi, I'm Mauricio Mahmud" />
           </div>
-          <h2 class="text-2xl font-light mb-6"> <TextWritter  text="...computer scientist." /></h2>
+          <h2 class="text-lg md:text-2xl font-light mb-6">
+            <TextWritter text="software developer | computer scientist" />
+          </h2>
           <p class="text-md  md:text-xl">
             <TextWritter :speed="10" :restart="false" text="I'm currently based in Málaga, Spain. I have cultivated a career in computer science, where I've had the opportunity to develop a robust skill set and work on a multitude of projects that span various aspects of technology, including software development, data analysis, and system architecture. In my free time I learn new stuff that calls my attention or program something interesting to me." />
           </p>
@@ -31,8 +32,9 @@
         </div>
       </div>
       <div 
-        class="relative flex z-50 place-content-center place-items-center bottom-0 bg-transparent w-full h-20 cursor-pointer"
-        @click="()=>$router.push({hash: '#content'})"
+        class="relative flex z-50 place-content-center place-items-center bottom-0 bg-transparent w-full h-20 cursor-pointer transition-transform duration-300"
+        :class="{ 'rotate-180': !shouldNavigateDown }"
+        @click="buttonActionToGoToPosition"
       >
         <GoogleIcon class="text-white select-none" :size="72" name="keyboard_arrow_down" />
       </div>
@@ -45,7 +47,11 @@ import GoogleIcon from '@/components/common/GoogleIcon.vue'
 import TextWritter from '@/components/common/TextWritter.vue'
 import { onMounted, ref } from 'vue';
 import { CV_URL, PROFILE_PICTURE_URL } from '@/info';
+import { useRouter, useRoute } from 'vue-router'
 
+
+const router = useRouter();
+const route = useRoute();
 
 const MAX_X_ANGLE = 5;
 const MAX_Y_ANGLE = 5;
@@ -58,13 +64,29 @@ let animationFrame = null
 let currentScrollPosition = 0
 let lastXAngle = 0
 let lastYAngle = 0
+let shouldNavigateDown = ref(true)
 
-onMounted(()=>{
-  addEventListener('scroll',()=>{ 
-    currentScrollPosition = document.documentElement.scrollTop / document.documentElement.scrollHeight; 
+function updateScrollState() {
+  const scrollHeight = document.documentElement.scrollHeight
+  currentScrollPosition = document.documentElement.scrollTop / scrollHeight
+  shouldNavigateDown.value = document.documentElement.scrollTop < window.innerHeight / 2
+}
+
+onMounted(() => {
+  updateScrollState()
+  addEventListener('scroll', () => {
+    updateScrollState()
     refreshTransform()
   })
 })
+
+function buttonActionToGoToPosition() {
+  if (shouldNavigateDown.value) {
+    router.push({hash: '#content'})
+  } else {
+    router.push({hash: '#header'})
+  }
+}
 
 function moveTitle(event){
   lastXAngle =-((event.x/container.value.offsetWidth) - 0.5).toFixed(2);

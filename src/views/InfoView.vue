@@ -34,12 +34,14 @@ import * as INFO from '@/info.js';
 
 
     <!-- background icons -->
+    <!--
     <div class="absolute top-0 left-0  rotate-45 pointer-events-none">
       <CodeBranchSolid class=" text-gray-400 opacity-5" size="300"/>
     </div>
     <div class="absolute bottom-0 right-0 pointer-events-none">
       <CodeSolid class=" text-gray-400 opacity-5" size="300"/>
     </div>
+    -->
     <!--  -->
 
   </div>
