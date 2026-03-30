@@ -5,11 +5,8 @@
       class="relative flex flex-col place-content-between gap-3 w-screen min-h-screen overflow-hidden colorfullbackground"
       style="animation: -global-background-move 12s infinite ease; background-size: 400% 400%; perspective: 300px;"
     >
-      <div class="flex gap-2 place-content-end"> 
-        <a :href="CV_URL" target="_blank" class="flex place-items-center !text-white border-solid border-white border-2 px-2 rounded-md mx-5 my-2 cursor-pointer select-none">
-          <GoogleIcon name="download" :size="32" />
-          <div class="!font-extrabold">Download CV</div> 
-        </a>
+      <div class="flex gap-3 place-content-end place-items-center mx-5"> 
+        <Links /> 
       </div>
 
       <div ref="titleContainer" class="flex flex-wrap md:flex-nowrap gap-5 place-content-start md:place-content-center place-items-start px-5">
@@ -21,14 +18,13 @@
           <h2 class="text-lg md:text-2xl font-light mb-6">
             <TextWritter text="software developer | computer scientist" />
           </h2>
-          <p class="text-md  md:text-xl">
-            <TextWritter :speed="10" :restart="false" text="I'm currently based in Málaga, Spain. I have cultivated a career in computer science, where I've had the opportunity to develop a robust skill set and work on a multitude of projects that span various aspects of technology, including software development, data analysis, and system architecture. In my free time I learn new stuff that calls my attention or program something interesting to me." />
+          <p class="text-md md:text-xl">
+            <TextWritter
+              :speed="10"
+              :restart="false"
+              text="I'm currently based in Málaga, Spain. I have cultivated a career in computer science, where I've had the opportunity to develop a robust skill set and work on a multitude of projects that span various aspects of technology, including software development, data analysis, and system architecture. In my free time I learn new stuff that calls my attention or program something interesting to me."
+            />
           </p>
-          <div>
-            <div class="flex flex-row justify-end mt-8">
-              <!-- <MyBrands /> -->
-            </div>
-          </div>
         </div>
       </div>
       <div 
@@ -45,8 +41,9 @@
 <script setup>
 import GoogleIcon from '@/components/common/GoogleIcon.vue'
 import TextWritter from '@/components/common/TextWritter.vue'
+import Links from '@/components/common/Links.vue'
 import { onMounted, ref } from 'vue';
-import { CV_URL, PROFILE_PICTURE_URL } from '@/info';
+import { PROFILE_PICTURE_URL } from '@/info';
 import { useRouter, useRoute } from 'vue-router'
 
 
