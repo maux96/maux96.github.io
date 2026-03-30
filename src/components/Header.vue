@@ -10,7 +10,7 @@
       </div>
 
       <div ref="titleContainer" class="flex flex-wrap md:flex-nowrap gap-5 place-content-start md:place-content-center place-items-start px-5">
-        <img class="rounded-3xl md:w-60 md:h-60 w-44 h-44" :src="PROFILE_PICTURE_URL" alt="Mauricio Mahmud">
+        <img class="rounded-3xl md:w-60 md:h-60 w-full" :src="PROFILE_PICTURE_URL" alt="Mauricio Mahmud">
         <div class="text-white md:basis-1/2 ">
           <div class="text-4xl font-bold">
             <TextWritter show-blink-cursor text="> Hi, I'm Mauricio Mahmud" />
@@ -42,7 +42,7 @@
 import GoogleIcon from '@/components/common/GoogleIcon.vue'
 import TextWritter from '@/components/common/TextWritter.vue'
 import Links from '@/components/common/Links.vue'
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import { PROFILE_PICTURE_URL } from '@/info';
 import { useRouter, useRoute } from 'vue-router'
 
@@ -63,6 +63,14 @@ let lastXAngle = 0
 let lastYAngle = 0
 let shouldNavigateDown = ref(true)
 
+/** Title tilt follows the mouse only on hover-capable, fine-pointer devices (not typical phones/tablets). */
+const useMouseTitleTilt = ref(false)
+let mouseTitleTiltMql = null
+
+function syncMouseTitleTilt() {
+  useMouseTitleTilt.value = mouseTitleTiltMql?.matches ?? false
+}
+
 function updateScrollState() {
   const scrollHeight = document.documentElement.scrollHeight
   currentScrollPosition = document.documentElement.scrollTop / scrollHeight
@@ -70,11 +78,21 @@ function updateScrollState() {
 }
 
 onMounted(() => {
+  mouseTitleTiltMql = window.matchMedia('(hover: hover) and (pointer: fine)')
+  syncMouseTitleTilt()
+  mouseTitleTiltMql.addEventListener('change', syncMouseTitleTilt)
+
   updateScrollState()
   addEventListener('scroll', () => {
     updateScrollState()
     refreshTransform()
   })
+})
+
+onUnmounted(() => {
+  if (mouseTitleTiltMql) {
+    mouseTitleTiltMql.removeEventListener('change', syncMouseTitleTilt)
+  }
 })
 
 function buttonActionToGoToPosition() {
@@ -85,9 +103,10 @@ function buttonActionToGoToPosition() {
   }
 }
 
-function moveTitle(event){
-  lastXAngle =-((event.x/container.value.offsetWidth) - 0.5).toFixed(2);
-  lastYAngle =((event.y/container.value.offsetHeight) - 0.5).toFixed(2);
+function moveTitle(event) {
+  if (!useMouseTitleTilt.value || !container.value) return
+  lastXAngle = -((event.x / container.value.offsetWidth) - 0.5).toFixed(2)
+  lastYAngle = ((event.y / container.value.offsetHeight) - 0.5).toFixed(2)
   refreshTransform()
 }
 
