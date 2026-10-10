@@ -36,9 +36,17 @@ export const skills= {
 
 export const experiences = [
   {
+    title: 'Senior Software Engineer',
+    company: 'EY Global Delivery Services',
+    description: 'My current job.',
+    logo: '/ernstandyoung_logo.jpeg',
+    icon: 'code' 
+  },
+  {
     title: 'Software Developer',
     company: 'Southworks',
     description: 'Software developer mainly working in AI applications with Azure, infrastructure as code (Terraform and Pulumi), .NET, Node.js, Python and React.',
+    logo: '/southworks_logo.jpeg',
     icon: 'code' 
   },
   {

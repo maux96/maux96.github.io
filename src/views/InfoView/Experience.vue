@@ -10,8 +10,9 @@ import { experiences } from '@/info.js'
     <div v-for="exp, index in experiences" :key="index" class="">
       <div class="flex rounded-md gap-4">
         <div class="flex flex-col place-items-center">
-          <div class="flex place-content-center place-items-center w-9 h-9 border-2 border-solid rounded-md ">
-            <GoogleIcon :name="exp.icon" />
+          <div class="flex place-content-center place-items-center w-9 h-9 border-2 border-solid rounded-md overflow-hidden">
+            <img v-if="exp.logo" :src="exp.logo" :alt="exp.company" class="w-full h-full object-cover" />
+            <GoogleIcon v-else :name="exp.icon" />
           </div>
           <div class="border-dashed border-l-2 grow"></div>
         </div>
