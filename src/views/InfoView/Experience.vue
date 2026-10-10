@@ -13,7 +13,7 @@ import { experiences } from '@/info.js'
           <div class="flex place-content-center place-items-center w-9 h-9 border-2 border-solid rounded-md ">
             <GoogleIcon :name="exp.icon" />
           </div>
-          <div class="border-dashed border-l-2 flex-grow "></div>
+          <div class="border-dashed border-l-2 grow"></div>
         </div>
         <div class="pb-6">
           <TextWritter class="font-bold text-blue-700" :text="exp.title" />
